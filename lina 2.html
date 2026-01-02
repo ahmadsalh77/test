@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💕 لينا 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rose-pink: #e8a0a0;
+            --deep-rose: #c76b6b;
+            --soft-cream: #fff5f5;
+            --rain-blue: #6b8fa3;
+            --night-purple: #2d1f3d;
+            --gold: #d4a574;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--night-purple) 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Rain Effect */
+        .rain-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .rain-drop {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(transparent, rgba(174, 194, 224, 0.6));
+            animation: rain-fall linear infinite;
+            border-radius: 0 0 5px 5px;
+        }
+
+        @keyframes rain-fall {
+            0% {
+                transform: translateY(-100vh) rotate(15deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(15deg);
+                opacity: 0;
+            }
+        }
+
+        /* Floating Petals */
+        .petal {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(ellipse at center, var(--rose-pink) 0%, var(--deep-rose) 100%);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.7;
+            animation: petal-fall linear infinite;
+            z-index: 2;
+            box-shadow: 0 0 10px rgba(232, 160, 160, 0.3);
+        }
+
+        @keyframes petal-fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Main Content */
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            padding-top: 3rem;
+        }
+
+        /* Opening Animation Overlay */
+        .opening-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--night-purple);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            animation: fadeOutOverlay 1s ease 3s forwards;
+        }
+
+        .opening-heart {
+            font-size: 5rem;
+            animation: heartBeat 0.6s ease infinite, growHeart 2s ease forwards;
+        }
+
+        .opening-text {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 2rem;
+            color: var(--rose-pink);
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes growHeart {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeOutOverlay {
+            to { opacity: 0; pointer-events: none; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Heart Animation */
+        .heart-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .heart {
+            font-size: 4rem;
+            color: var(--deep-rose);
+            text-shadow: 0 0 30px rgba(199, 107, 107, 0.8),
+                         0 0 60px rgba(199, 107, 107, 0.4);
+            animation: pulse 1.5s ease-in-out infinite;
+            display: block;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* Name Title */
+        .name-title {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: transparent;
+            background: linear-gradient(135deg, var(--soft-cream), var(--rose-pink), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(232, 160, 160, 0.5);
+            margin-bottom: 0.5rem;
+            animation: shimmer 3s ease-in-out infinite, slideUp 1s ease;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Subtitle */
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--rose-pink);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Message Cards */
+        .messages-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 100%;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(232, 160, 160, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            opacity: 0;
+            animation: cardSlideIn 0.8s ease forwards;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes cardSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            animation: shimmerCard 3s infinite;
+        }
+
+        @keyframes shimmerCard {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        .message-card:nth-child(1) { animation-delay: 0.3s; }
+        .message-card:nth-child(2) { animation-delay: 0.5s; }
+        .message-card:nth-child(3) { animation-delay: 0.7s; }
+        .message-card:nth-child(4) { animation-delay: 0.9s; }
+
+        .message-card.tapped {
+            transform: scale(1.03);
+            border-color: var(--rose-pink);
+            box-shadow: 0 10px 30px rgba(199, 107, 107, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            display: block;
+            animation: bounce 2s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .message-card:nth-child(2) .card-icon { animation-delay: 0.3s; }
+        .message-card:nth-child(3) .card-icon { animation-delay: 0.6s; }
+        .message-card:nth-child(4) .card-icon { animation-delay: 0.9s; }
+
+        .card-title {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .card-text {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Poem Section */
+        .poem-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 2rem 1.5rem;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.2s;
+            position: relative;
+        }
+
+        .poem-section::before,
+        .poem-section::after {
+            content: '❦';
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--gold);
+            opacity: 0.5;
+            animation: rotateFlower 4s linear infinite;
+        }
+
+        @keyframes rotateFlower {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .poem-section::before { top: 0.8rem; right: 1rem; }
+        .poem-section::after { bottom: 0.8rem; left: 1rem; animation-direction: reverse; }
+
+        .poem-title {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .poem-text {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 2.2;
+            direction: rtl;
+        }
+
+        .poem-text p {
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .poem-text p:nth-child(1) { animation-delay: 1.4s; }
+        .poem-text p:nth-child(2) { animation-delay: 1.6s; }
+        .poem-text p:nth-child(3) { animation-delay: 1.8s; }
+        .poem-text p:nth-child(4) { animation-delay: 2s; }
+        .poem-text p:nth-child(5) { animation-delay: 2.2s; }
+        .poem-text p:nth-child(6) { animation-delay: 2.4s; }
+
+        /* Flower Garden */
+        .flower-garden {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 2.6s;
+            flex-wrap: wrap;
+        }
+
+        .flower {
+            font-size: 2.5rem;
+            animation: sway 2s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s;
+            padding: 0.5rem;
+        }
+
+        .flower:active {
+            transform: scale(1.5) rotate(20deg);
+        }
+
+        .flower:nth-child(1) { animation-delay: 0s; }
+        .flower:nth-child(2) { animation-delay: 0.2s; }
+        .flower:nth-child(3) { animation-delay: 0.4s; }
+        .flower:nth-child(4) { animation-delay: 0.6s; }
+        .flower:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        /* Footer Message */
+        .footer-message {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.8rem;
+            color: var(--rose-pink);
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 2.8s, glow 2s ease-in-out infinite 3s;
+            text-shadow: 0 0 20px rgba(232, 160, 160, 0.5);
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(232, 160, 160, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(232, 160, 160, 0.8), 0 0 60px rgba(232, 160, 160, 0.4); }
+        }
+
+        .signature {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-top: 1rem;
+            opacity: 0.9;
+            animation: fadeIn 1s ease 3s forwards;
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, white 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 2s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Touch Hearts Effect */
+        .touch-heart {
+            position: fixed;
+            pointer-events: none;
+            font-size: 2rem;
+            z-index: 1000;
+            animation: floatUpHeart 1.5s ease forwards;
+        }
+
+        @keyframes floatUpHeart {
+            0% { opacity: 1; transform: scale(0) translateY(0); }
+            50% { opacity: 1; transform: scale(1.2) translateY(-50px); }
+            100% { opacity: 0; transform: scale(0.5) translateY(-150px); }
+        }
+
+        /* Swipe hint */
+        .swipe-hint {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: fadeInUp 1s ease 4s forwards, pulse 2s ease infinite 5s;
+            opacity: 0;
+            z-index: 100;
+        }
+
+        .swipe-hint span {
+            animation: swipeArrow 1.5s ease infinite;
+        }
+
+        @keyframes swipeArrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Double tap hint */
+        .tap-hint {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(199, 107, 107, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.8rem;
+            opacity: 0;
+            animation: showHint 0.5s ease 5s forwards, hideHint 0.5s ease 8s forwards;
+            z-index: 100;
+        }
+
+        @keyframes showHint {
+            to { opacity: 1; }
+        }
+
+        @keyframes hideHint {
+            to { opacity: 0; pointer-events: none; }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            animation: confettiFall 3s ease forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+            .name-title { font-size: 3rem; }
+            .poem-text { font-size: 1rem; }
+            .footer-message { font-size: 1.5rem; }
+            .flower { font-size: 2rem; }
+        }
+
+        /* Landscape mode */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .container { padding-top: 1rem; }
+            .heart { font-size: 2.5rem; }
+            .name-title { font-size: 2.5rem; margin-bottom: 0.3rem; }
+            .messages-container { flex-direction: row; flex-wrap: wrap; }
+            .message-card { flex: 1 1 45%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Opening Animation -->
+    <div class="opening-overlay">
+        <div class="opening-heart">💕</div>
+        <div class="opening-text">إلى حبيبتي لينا</div>
+    </div>
+
+    <!-- Tap Hint -->
+    <div class="tap-hint">💕 المسي الشاشة لقلوب أكثر</div>
+
+    <!-- Rain Effect -->
+    <div class="rain-container" id="rain"></div>
+
+    <!-- Floating Petals -->
+    <div id="petals"></div>
+
+    <!-- Sparkles -->
+    <div id="sparkles"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="heart-container">
+            <span class="heart">💕</span>
+        </div>
+
+        <h1 class="name-title">لينا</h1>
+        <p class="subtitle">✨ نور حياتي وسعادتي ✨</p>
+
+        <div class="messages-container">
+            <div class="message-card">
+                <span class="card-icon">🌧️</span>
+                <h3 class="card-title">مثل المطر</h3>
+                <p class="card-text">أنتِ مثل المطر... تأتين فتُحيين قلبي، وتغسلين همومي، وتجعلين كل شيء أجمل</p>
+            </div>
+
+            <div class="message-card">
+                <span class="card-icon">🌹</span>
+                <h3 class="card-title">وردة حياتي</h3>
+                <p class="card-text">من بين كل الورود في العالم، اخترتُ أن أعشق وردة واحدة... أنتِ</p>
+            </div>
+
+            <div class="message-card">
+                <span class="card-icon">💫</span>
+                <h3 class="card-title">نجمتي</h3>
+                <p class="card-text">في سماء حياتي المليئة بالنجوم، أنتِ القمر الذي ينير دربي</p>
+            </div>
+
+            <div class="message-card">
+                <span class="card-icon">☕</span>
+                <h3 class="card-title">دفء قلبي</h3>
+                <p class="card-text">أنتِ الدفء في ليالي الشتاء، وأنتِ البرودة اللطيفة في حر الصيف</p>
+            </div>
+        </div>
+
+        <div class="poem-section">
+            <h2 class="poem-title">❦ إليكِ يا لينا ❦</h2>
+            <div class="poem-text">
+                <p>يا من سكنتِ القلب دون استئذان</p>
+                <p>وملأتِ عمري فرحاً وأمان</p>
+                <p>أنتِ المطر الذي يروي ظمأي</p>
+                <p>وأنتِ الوردة في كل بستان</p>
+                <p>حبيبتي... يا كل الحكاية</p>
+                <p>معكِ تبدأ الحياة وتنتهي</p>
+            </div>
+        </div>
+
+        <div class="flower-garden">
+            <span class="flower">🌸</span>
+            <span class="flower">🌷</span>
+            <span class="flower">🌹</span>
+            <span class="flower">🌺</span>
+            <span class="flower">💐</span>
+        </div>
+
+        <div class="footer-message">
+            <p>أحبكِ إلى الأبد 💕</p>
+            <p class="signature">~ زوجك المحب أحمد ~</p>
+        </div>
+    </div>
+
+    <div class="swipe-hint">
+        <span>👆</span> المسي الشاشة
+    </div>
+
+    <script>
+        // Create Rain Drops
+        function createRain() {
+            const rainContainer = document.getElementById('rain');
+            const numberOfDrops = window.innerWidth < 600 ? 60 : 100;
+
+            for (let i = 0; i < numberOfDrops; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'rain-drop';
+                drop.style.left = Math.random() * 100 + '%';
+                drop.style.animationDuration = (Math.random() * 1 + 0.5) + 's';
+                drop.style.animationDelay = Math.random() * 2 + 's';
+                drop.style.opacity = Math.random() * 0.5 + 0.3;
+                rainContainer.appendChild(drop);
+            }
+        }
+
+        // Create Petals
+        function createPetals() {
+            const petalsContainer = document.getElementById('petals');
+            const numberOfPetals = window.innerWidth < 600 ? 20 : 30;
+
+            for (let i = 0; i < numberOfPetals; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                petal.style.animationDelay = Math.random() * 10 + 's';
+                petal.style.width = (Math.random() * 10 + 10) + 'px';
+                petal.style.height = petal.style.width;
+                petalsContainer.appendChild(petal);
+            }
+        }
+
+        // Create Sparkles
+        function createSparkles() {
+            const sparklesContainer = document.getElementById('sparkles');
+            const numberOfSparkles = window.innerWidth < 600 ? 15 : 25;
+
+            for (let i = 0; i < numberOfSparkles; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                sparkle.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+
+        // Touch/Click heart effect
+        function createTouchHeart(x, y) {
+            const hearts = ['💕', '❤️', '💖', '💗', '💓', '🌹', '✨'];
+            const heart = document.createElement('div');
+            heart.className = 'touch-heart';
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = (x - 15) + 'px';
+            heart.style.top = (y - 15) + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1500);
+        }
+
+        // Touch events for mobile
+        document.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            createTouchHeart(touch.clientX, touch.clientY);
+            
+            // Create multiple hearts on touch
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    createTouchHeart(
+                        touch.clientX + (Math.random() - 0.5) * 100,
+                        touch.clientY + (Math.random() - 0.5) * 100
+                    );
+                }, i * 100);
+            }
+        });
+
+        // Mouse click for desktop
+        document.addEventListener('click', (e) => {
+            createTouchHeart(e.clientX, e.clientY);
+        });
+
+        // Card tap effect
+        document.querySelectorAll('.message-card').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.classList.add('tapped');
+                // Vibrate if supported
+                if (navigator.vibrate) {
+                    navigator.vibrate(50);
+                }
+            });
+            card.addEventListener('touchend', () => {
+                setTimeout(() => card.classList.remove('tapped'), 300);
+            });
+        });
+
+        // Flower touch effect with confetti
+        document.querySelectorAll('.flower').forEach(flower => {
+            flower.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                
+                // Vibrate
+                if (navigator.vibrate) {
+                    navigator.vibrate([50, 30, 50]);
+                }
+                
+                // Create confetti
+                const colors = ['#e8a0a0', '#c76b6b', '#d4a574', '#fff5f5', '#ff6b6b'];
+                const rect = flower.getBoundingClientRect();
+                
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti';
+                        confetti.innerHTML = ['💕', '❤️', '🌸', '✨', '💖'][Math.floor(Math.random() * 5)];
+                        confetti.style.left = rect.left + Math.random() * 50 + 'px';
+                        confetti.style.top = rect.top + 'px';
+                        confetti.style.fontSize = (Math.random() * 1 + 0.8) + 'rem';
+                        document.body.appendChild(confetti);
+                        setTimeout(() => confetti.remove(), 3000);
+                    }, i * 50);
+                }
+            });
+
+            flower.addEventListener('click', (e) => {
+                const rect = flower.getBoundingClientRect();
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        createTouchHeart(
+                            rect.left + Math.random() * 50,
+                            rect.top + Math.random() * 50
+                        );
+                    }, i * 80);
+                }
+            });
+        });
+
+        // Double tap for big heart explosion
+        let lastTap = 0;
+        document.addEventListener('touchend', (e) => {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            
+            if (tapLength < 300 && tapLength > 0) {
+                // Double tap detected - big heart explosion
+                const touch = e.changedTouches[0];
+                
+                if (navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100]);
+                }
+                
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.className = 'touch-heart';
+                        heart.innerHTML = '💕';
+                        heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                        
+                        const angle = (i / 20) * Math.PI * 2;
+                        const distance = Math.random() * 100 + 50;
+                        
+                        heart.style.left = (touch.clientX + Math.cos(angle) * distance) + 'px';
+                        heart.style.top = (touch.clientY + Math.sin(angle) * distance) + 'px';
+                        
+                        document.body.appendChild(heart);
+                        setTimeout(() => heart.remove(), 1500);
+                    }, i * 30);
+                }
+            }
+            lastTap = currentTime;
+        });
+
+        // Initialize
+        createRain();
+        createPetals();
+        createSparkles();
+
+        // Hide swipe hint after interaction
+        document.addEventListener('touchstart', () => {
+            document.querySelector('.swipe-hint').style.opacity = '0';
+        }, { once: true });
+    </script>
+</body>
+</html>
